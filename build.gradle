@@ -1,0 +1,43 @@
+plugins {
+    id 'java'
+    id "com.github.johnrengelman.shadow" version "7.1.2"
+}
+
+group 'org.kingscrossva'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.10'
+    implementation 'org.apache.pdfbox:pdfbox:2.0.25'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jar {
+   manifest {
+       attributes 'Main-Class': "org.kingscrossva.av.Pdfluent"
+   }
+}
+
+// tasks.register('uberJar', Jar) {
+//     archiveClassifier = 'uber'
+
+//     manifest {
+//         attributes 'Main-Class': "org.kingscrossva.av.Pdfluent"
+//     }
+//     archiveBaseName = "${rootProject.name}"  
+
+//     from sourceSets.main.output
+//     dependsOn configurations.runtimeClasspath
+//     from {
+//         configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+//     }
+// }
